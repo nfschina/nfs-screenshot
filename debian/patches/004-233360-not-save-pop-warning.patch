@@ -1,0 +1,159 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ nfs-screenshot (1.0-9) trusty; urgency=utility
+ .
+     *[232227]:修改快捷键冲突的问题
+     *问题原因:快捷键注册冲突
+     *问题解决方案：去掉重复的快捷键，修改ctrl+z为ctrl+alt+z
+Author: zhanglei <zhanglei_hlj@nfs-china.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2017-06-07
+
+--- nfs-screenshot-1.0.orig/nfs/nfs-screenshot/js/canvasPainter.js
++++ nfs-screenshot-1.0/nfs/nfs-screenshot/js/canvasPainter.js
+@@ -49,12 +49,15 @@ var is_clipboard_true = 1;  //剪切板�
+ var is_clipboard_false = 0;  //非剪切板
+ var is_clipboard_status = 0;	
+ var img = null;
+-var loading = false
++var loading = false;
+ 
+ // Load native UI library.
+ var gui = require('nw.gui');
+ var win = gui.Window.get();
+ 
++
++
++var _Isreset=false;
+ // We can not create a clipboard, we have to receive the system clipboard
+ var isShowWindow = true;
+ var FULLSCREEN = "0";
+@@ -386,6 +389,30 @@ $(document).ready(function () {
+ 
+     //关闭按钮点击事件
+     $(".close_a").click(function () {
++ 	if(_Isreset)
++        {
++               $.MessageBox({
++                              title: '警告',
++                              content: '图片未保存，是否退出',
++                              type: 'confirmation', background: 'write',
++                              buttons: { confirm: {title: '是', style: 'continue'}, cancel: {title: '否', style: 'cancel' } },
++                              usekey: true
++                              },function(response) {
++                                                        if(response)
++                                                         {
++                                                             gui.App.unregisterGlobalHotKey(shortcut);
++                                                             gui.App.unregisterGlobalHotKey(shortcut2);
++                                                             gui.App.unregisterGlobalHotKey(shortcut3);
++                                                             gui.App.unregisterGlobalHotKey(shortcut4);
++							     win.close();
++							  }
++                                                          });
++
++
++            }
++	else
++	{
++
+         gui.App.unregisterGlobalHotKey(shortcut);
+         gui.App.unregisterGlobalHotKey(shortcut2);
+         gui.App.unregisterGlobalHotKey(shortcut3);
+@@ -394,6 +421,7 @@ $(document).ready(function () {
+ //        gui.App.unregisterGlobalHotKey(shortcut6);
+ //        gui.App.unregisterGlobalHotKey(shortcut7);
+         win.close();
++	}
+     });
+ 
+     //全屏截图，实现通过调用底层python脚本实现
+@@ -512,12 +540,12 @@ $(document).ready(function () {
+         if (!isSaveImage) {
+             if (_sourceCanvas != undefined) {
+ 		$("#cancelBtn").trigger("click");
+-                isSaveImage = true;
+-		
++		isSaveImage =true;
+ 		_sourceContext.drawImage(_textCanvas,0,0);
+ 		_sourceCanvas.style.zIndex = 1;   //测试
+-                var base64Data = _sourceCanvas.toDataURL().replace(/^data:image\/\w+;base64,/, "");
+-                saveImage(base64Data);		
++	        var base64Data = _sourceCanvas.toDataURL().replace(/^data:image\/\w+;base64,/, "");
++		saveImage(base64Data);
++		_Isreset = false;
+             }
+         }
+ 
+@@ -886,6 +914,7 @@ mouseDown = function (e) {
+             _syncSquareObj.color = _color;
+             _syncSquareObj.lineWidth = _lineWidth;
+ 	     _paint = true;
++	    _Isreset = true;
+         } else if (_drawMode == "ellipse") {
+             _syncCircleObj = new SyncCircle();
+             _syncCircleObj.beginPos.x = mouseX;
+@@ -894,13 +923,16 @@ mouseDown = function (e) {
+             _syncCircleObj.color = _color;
+             _syncCircleObj.lineWidth = _lineWidth;
+ 	     _paint = true;
++	     _Isreset = true;
+         }else if(_drawMode == "arrow"){
+             _syncArrowObj = new SyncArrow();
+             _syncArrowObj.beginPos.x = mouseX;
+             _syncArrowObj.beginPos.y = mouseY;
+             _syncArrowObj.color = _color;
+             _syncArrowObj.brushWidth = _brushWidth;
+-	     _paint = true;
++	    _paint = true;
++            _Isreset = true;
++
+         }
+         else if(_drawMode == "pencil"){
+             _lineObj = new Line();
+@@ -915,7 +947,9 @@ mouseDown = function (e) {
+             _syncLineObj.beginPos.y = mouseY;
+             _syncLineObj.color = _color;
+             _syncLineObj.lineWidth = _lineObj.lineWidth;
+-	     _paint = true;
++	    _paint = true;
++	    _Isreset = true;
++
+         }else if (_drawMode == "eraser"){
+             _eraserObj = new Eraser();
+             _eraserObj.x = mouseX;
+@@ -929,7 +963,9 @@ mouseDown = function (e) {
+             _syncEraserObj.beginPos.y = mouseY;
+             _syncEraserObj.color = "white";
+             _syncEraserObj.lineWidth = _eraserWidth;
+-	     _paint = true;
++	    _paint = true;
++	    _Isreset = true;
++
+         }else if(_drawMode == "text"){
+ 	     if(isReDrawFlag) {  //如果为真的话，那么就把内容画上去
+                             var words = $(".text_box").val();
+@@ -952,6 +988,8 @@ mouseDown = function (e) {
+ 				_syncTextObj.beginPos.x = mouseX;
+ 				_syncTextObj.beginPos.y = mouseY;
+ 				map.put(map.getCount(),new createCanvasOperation(_drawMode,_syncTextObj));
++				_Isreset = true;
++
+                             }
+                         }	
+ 	}

@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+<script>  
+</script> 
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="=width=device-width,user-scalable=no"/>
+    <title>方德截图</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="js/jquery-ui-1.11.2/jquery-ui.css"/>
+	<link type="text/css" rel="stylesheet" href="css/messagebox.css"/>
+
+    <!--引入JS-->
+
+      <style>
+        body {
+            -webkit-user-select: none;
+            -webkit-app-region: drag;
+        }
+
+        a {
+            -webkit-app-region: no-drag;
+        }
+
+        li {
+            -webkit-app-region: no-drag;
+        }
+
+        .center_right {
+            -webkit-app-region: no-drag;
+        }
+
+        #font {
+            -webkit-app-region: no-drag;
+        }
+
+        .center_left {
+            -webkit-app-region: no-drag;
+        }
+
+    </style> 
+</head>
+
+<body>
+<div class="box">
+	
+    <div class="top_main" >
+
+        <div id="logo_letter" class="logo">方德截图</div>
+        <div class="win_button">
+            <a class="little_a">&nbsp;</a>
+	    <a class="middle_a" id= middle_a_id ></a><!--<img id = middle_a_id src="img/middle.png"> &nbsp;</a>-->
+            <a class="close_a">&nbsp;</a>
+        </div>
+        <div class="top_button">
+            <div class="top_button_left">
+                <li><a class="full_a"><img id="id_full_a" src="img/full.png" title="全屏截图(ctrl+alt+q)"></a></li>
+                <li><a class="window_a"><img id="id_window_a" src="img/window.png" title="窗口截图(ctrl+alt+w)"></a></li>
+                <li><a class="free_a"><img id="id_free_a" src="img/free.png" title="自由截取(ctrl+alt+a)"></a></li>
+		<!--<li><a class="" id="about"><img src="img/1.png" title="关于"></a></li>-->
+		<div  class="time_box"><font id="id_yanchishijian" size="2" color="white">延迟时间&nbsp;</font><select name='time' id="time" style='width:58px'>
+                    <option id="id_zeromin" value='0' selected>0秒</option>
+                    <option id="id_onemin" value='1'>1秒</option>
+                    <option id="id_twomin" value='2'>2秒</option>
+                    <option id="id_threemin" value='3'>3秒</option>
+                    <option id="id_fourmin" value='4'>4秒</option>
+                    <option id="id_fivemin" value='5'>5秒</option>
+                    <!--<option value='10' >10</option>-->
+                </select></div>
+            </div>
+            <div class="top_button_right">
+                <li><a class="full_a" id="saveImage"><img id="id_saveImagePath" src="img/save.png"></a></li>
+		<li><a class="full_a" id="clipboardImage"><img id="id_clipboardImagePath" src="img/clipboard.png"></a></li>
+		<li><a class="full_a" id="clearImage"><img id="id_clearImagePath" src="img/undo.png"></a></li>
+
+            </div>
+        </div>
+    </div>
+    <div class="center_mian">
+        <div class="center_left">
+            <li><a class="left01"><img id="id_left01" src="img/left01.png" title="矩形"></a></li>
+            <li><a class="left02"><img id="id_left02" src="img/left02.png" title="圆形"></a></li>
+            <li><a class="left03"><img id="id_left03" src="img/left03.png" title="箭头"></a></li>
+            <li><a class="left04"><img id="id_left04" src="img/left04.png" title="铅笔"></a></li>
+            <li><a class="left05"><img id="id_left05" src="img/left05.png" title="撤消"></a></li>
+            <li><a class="left06"><img id="id_left06" src="img/left06.png" title="字体"></a></li>
+            <li><a class="left07"><img id="id_left07" src="img/left07.png" title="橡皮擦"></a></li>
+            <div class="color" style="background:#fa7c44;"></div>
+        </div>
+	<div style="position:absolute;  top:30%;  height:200px;  margin:0 auto; margin-top:-120px; width:300px; left:50%; margin-left:-150px;" id="shclFireballs"></div> 
+        <div class="center_right" id="container" style="display:none;">
+
+        </div>
+    </div>
+    <div class="bottom_main">
+        <div class="line_box">
+            <li class="presssize"><a class="line01"><img src="img/line01.png"></a></li>
+            <li><a class="line02"><img src="img/line02.png"></a></li>
+            <li><a class="line03"><img src="img/line03.png"></a></li>
+            <li><a class="line04"><img src="img/line05.png"></a></li>
+	    <!--
+	     <span style="line-height:50px; padding-left:10px;">字体大小：&nbsp;&nbsp;
+		<button id="subtract" class="addButton">-</button>
+			&nbsp;<input type="text" id="fontsize" value="22" disabled="disabled" style="width: 25px;"/>&nbsp;
+		<button id="add" class="addButton">+ </button>
+            </span>-->
+        </div>
+        <ul class="color_box" id="borderColor">
+            <li style="background:#46bfd4"></li>
+            <li style="background:#ef818f"></li>
+            <li style="background:#00ccdc"></li>
+            <li style="background:#5ec2b4"></li>
+            <li style="background:#efc97b"></li>
+            <li style="background:#004b80"></li>
+            <li style="background:#00fcff"></li>
+            <li style="background:#fdca26"></li>
+            <li style="border:1px solid #68777a;background:#fa7c44"></li>
+            <li style="background:#4cd387"></li>
+            <li style="background:#005826"></li>
+            <li style="background:#ae3d49"></li>
+            <li style="background:#ff2b06"></li>
+            <li style="background:#3b1015"></li>
+            <li style="background:#00c022"></li>
+            <li style="background:#4cd387"></li>
+        </ul>
+    </div>
+</div>
+<div class="font" style="display:none;" id="showTxt"><textarea id="tt" rows="3" cols="10" class="text_box" placeholder="在此输入文字(最长为200个字符)" wrap="off"
+                                                  style="overflow: hidden;" maxlength="200"></textarea>
+    <span style="line-height:50px; padding-left:10px;">字体大小：&nbsp;&nbsp;<button id="subtract" class="addButton">-
+    </button> <input type="text" id="fontsize" value="22" disabled="disabled" style="width: 25px;"/><button id="add"
+                                                                                                            class="addButton">
+        +
+    </button></span>
+
+    <br/>
+    <span style="line-height:18px; padding-left:10px;float: left">字体颜色：</span>
+    <ul class="color_box" style="float: left;margin:5px" id="fontColor">
+        <li style="background:#46bfd4"></li>
+        <li style="background:#ef818f"></li>
+        <li style="background:#00ccdc"></li>
+        <li style="background:#5ec2b4"></li>
+        <li style="background:#efc97b"></li>
+        <li style="background:#004b80"></li>
+        <li style="background:#00fcff"></li>
+        <li style="background:#fdca26"></li>
+        <li style="border:1px solid #68777a;background:#fa7c44"></li>
+        <li style="background:#4cd387"></li>
+        <li style="background:#005826"></li>
+        <li style="background:#ae3d49"></li>
+        <li style="background:#ff2b06"></li>
+        <li style="background:#3b1015"></li>
+        <li style="background:#00c022"></li>
+        <li style="background:#4cd387"></li>
+    </ul>
+    <br/>
+
+    <div style="margin-top: 30px;margin-left: 80px;">
+        <button id="commitBtn" style="text-align: center;">确认</button>
+        <button id="cancelBtn" style="text-align: center;margin-left: 45px;">取消</button>
+    </div>
+</div>
+<div id="id_savesuccess" class="tip">保存成功</div>
+<!-- ui-dialog -->
+<div id="dialog" title="Dialog Title" style='display:none;'>
+	<p>Copyright © 2007-2016,无锡中科方德软件有限公司</p>
+</div>
+</body>
+  <!--引入JS-->
+ 	 <script type="text/javascript" >
+		
+		document.write("<scr"+"ipt src=\"js/jquery-1.11.1.min.js\"></sc"+"ript>");
+		document.write("<scr"+"ipt src=\"js/jquery-ui-1.11.2/jquery-ui.js\"></sc"+"ript>");
+		document.write("<scr"+"ipt src=\"js/jquery.shCircleLoader-min.js\"></sc"+"ript>");
+		document.write("<scr"+"ipt src=\"js/map.js\"></sc"+"ript>");
+		document.write("<scr"+"ipt src=\"js/extend.js\"></sc"+"ript>");
+		document.write("<scr"+"ipt src=\"js/arrow.js\"></sc"+"ript>");
+		document.write("<scr"+"ipt src=\"js/drawText.js\"></sc"+"ript>");
+		document.write("<scr"+"ipt src=\"js/gui.js\"></sc"+"ript>");
+		document.write("<scr"+"ipt src=\"js/messagebox.min.js\"></sc"+"ript>");
+		document.write("<scr"+"ipt src=\"js/canvasPainter.js\"></sc"+"ript>");
+		document.write("<scr"+"ipt src=\"js/about.js\"></sc"+"ript>");
+		
+	</script>
+
+
+
+	<script>
+	var fangdejietu = ['方德截图', 'NFS Screenshot'];  
+	var  yanchishijian= ['延迟时间', 'delay time &nbsp;']; 
+	
+	var  quanpinjietu= ['全屏截图(ctrl+alt+q)', 'full screenshot(ctrl+alt+q)']; 
+	var  chuangkoujietu= ['窗口截图(ctrl+alt+w)', 'Window screenshot(ctrl+alt+w)']; 
+	var  ziyoujietu= ['自由截取(ctrl+alt+a)', 'Free screenshot(ctrl+alt+a)']; 
+	var juxing = ['矩形', 'Rectangle'];  
+	var yuanxing = ['圆形', 'Circular'];  
+	var jiantou = ['箭头', 'Arrow'];  
+	var qianbi = ['铅笔', 'Pencil'];  
+	var chexiao = ['撤销', 'Redo'];  
+	var ziti = ['字体', 'Font'];  
+	var xiangpica = ['橡皮擦', 'Eraser'];  
+
+	var saveimagepath = ['img/save.png', 'img/save_en.png'];  
+	
+	var clipboardimagepath = ['img/clipboard.png','img/clipboard_en.png'];
+
+	var undoimagepath = ['img/undo.png','img/undo_en.png'];
+
+	var zeromin = ['0秒', '0 s'];  
+	var onemin =  ['1秒', '1 s'];  
+	var twomin =  ['2秒', '2 s'];  
+	var treemin = ['3秒', '3 s'];  
+	var fourmin = ['4秒', '4 s'];  
+	var fivemin = ['5秒', '5 s'];
+
+	var language=''
+	var lang_flag = 0;
+	if (navigator.language) {
+		var language = navigator.language;
+		}
+	else {
+		var language = navigator.browserLanguage;
+	}
+if (language == 'zh-CN'){
+	lang_flag=0;	
+}
+else {
+	lang_flag=1;
+}
+document.title =fangdejietu[lang_flag];
+$(function(){
+	$("#logo_letter").html(fangdejietu[lang_flag]);
+	$("#logo_letter").html(fangdejietu[lang_flag]);
+	$("#id_yanchishijian").html(yanchishijian[lang_flag])
+	$("#id_full_a").attr("title",quanpinjietu[lang_flag]);
+	$("#id_window_a").attr("title",chuangkoujietu[lang_flag]);
+	$("#id_free_a").attr("title",ziyoujietu[lang_flag]);
+
+	$("#id_left01").attr("title",juxing[lang_flag]);
+	$("#id_left02").attr("title",yuanxing[lang_flag]);
+	$("#id_left03").attr("title",jiantou[lang_flag]);
+	$("#id_left04").attr("title",qianbi[lang_flag]);
+	$("#id_left05").attr("title",chexiao[lang_flag]);
+	$("#id_left06").attr("title",ziti[lang_flag]);
+	$("#id_left07").attr("title",xiangpica[lang_flag]);
+
+	$("#id_saveImagePath").attr("src",saveimagepath[lang_flag]);
+	$("#id_clipboardImagePath").attr("src",clipboardimagepath[lang_flag]);
+        $("#id_clearImagePath").attr("src",undoimagepath[lang_flag]);
+
+
+	$("#id_zeromin").html(zeromin[lang_flag]);
+	$("#id_onemin").html(onemin[lang_flag]);
+	$("#id_twomin").html(twomin[lang_flag]);
+	$("#id_threemin").html(treemin[lang_flag]);
+	$("#id_fourmin").html(fourmin[lang_flag]);
+	$("#id_fivemin").html(fivemin[lang_flag]);
+})
+//$("#imgTest").attr("title","asdfsdf");
+	</script>
+</html>

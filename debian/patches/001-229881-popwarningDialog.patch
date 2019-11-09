@@ -1,0 +1,276 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ nfs-screenshot (1.0-6) trusty; urgency=utility
+ .
+   *[229881]:修改在截图失败的时候弹出警告对话框
+   *问题原因:隐藏窗口慢的时候截取窗口不成功
+   *问题解决方案:在不成功时弹出警告窗口
+Author: zhanglei <zhanglei_hlj@nfs-china.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2017-03-07
+
+--- /dev/null
++++ nfs-screenshot-1.0/nfs/nfs-screenshot/css/messagebox.css
+@@ -0,0 +1,177 @@
++/**
++ * jQuery MessageBox Plugin
++ * Github: http://github.com/yali4/messagebox/
++ * Link: http://yalcinceylan.net/messagebox
++ * Copyright: October 2013
++ * Creator: Yalçın CEYLAN
++ * Github: http://github.com/yali4/
++ * Website: http://yalcinceylan.net
++ * License: MIT <http://opensource.org/licenses/mit-license.php>
++*/
++
++.messagebox-background {
++	position:fixed;
++	display:none;
++	margin:0; padding:0;
++	top:0; left:0;
++	width:100%; height:100%;
++	z-index:999;
++}
++.messagebox-dialog {
++	width:280px;
++	height:140px;
++	position:fixed;
++	top:0; left:0;
++	margin:0; padding:0;
++	z-index:9999;
++	background:#FFF;
++	border-radius:3px;
++	border:solid 1px #e2e2e2;
++	overflow:hidden;
++}
++.messagebox-content {
++	min-width:300px; max-width:450px;
++	position:relative; display:block;
++}
++.messagebox-content > h1 {
++	position:relative; display:block;
++	font:15px Helvetica; color:#585858;
++	font-weight:bold; background:#c8e5fa;
++	margin:0; padding:12px 10px;
++	border-bottom:1px solid #d5d5d5;
++}
++.messagebox-content > div {
++	margin:0; padding:15px;
++	font:12px Helvetica;
++	color:#000; line-height:20px;
++	max-height:100px; overflow:auto;
++}
++.messagebox-buttons {
++	position:relative; display:block;
++	padding:10px 10px; margin:0 10px;
++	text-align:right;
++	border-top: 1px solid #ddd;
++}
++.messagebox-buttons > button {
++	margin-right:10px;
++}
++.messagebox-timer {
++	position:absolute; padding:10px;
++	right:5px; top:5px; display:none;
++	font:12px Helvetica; color:#585858;
++	font-weight:bold;
++}
++
++.messagebox-buttons .cancel,
++.messagebox-buttons .continue,
++.messagebox-buttons .danger {
++	position:relative;
++	display:inline-block;
++	height:25px; line-height:25px;
++	padding:0px 10px 0px 10px;
++	font:12px Helvetica;
++	border-radius: 2px;
++	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
++	outline:0; cursor:pointer;
++}
++
++.messagebox-buttons .continue {
++	color:#FFF;
++	background: rgb(77,114,166);
++	background: -moz-linear-gradient(top, rgba(77,114,166,1) 0%, rgba(61,90,132,1) 100%);
++	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(77,114,166,1)), color-stop(100%,rgba(61,90,132,1)));
++	background: -webkit-linear-gradient(top, rgba(77,114,166,1) 0%,rgba(61,90,132,1) 100%);
++	background: -o-linear-gradient(top, rgba(77,114,166,1) 0%,rgba(61,90,132,1) 100%);
++	background: -ms-linear-gradient(top, rgba(77,114,166,1) 0%,rgba(61,90,132,1) 100%);
++	background: linear-gradient(to bottom, rgba(77,114,166,1) 0%,rgba(61,90,132,1) 100%);
++	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d72a6', endColorstr='#3d5a84',GradientType=0 );
++	border: 1px solid #2d4261;
++}
++.messagebox-buttons .continue:hover {
++	background: rgb(77,114,166);
++	background: -moz-linear-gradient(top,  rgba(77,114,166,1) 1%, rgba(40,74,122,1) 100%);
++	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(77,114,166,1)), color-stop(100%,rgba(40,74,122,1)));
++	background: -webkit-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(40,74,122,1) 100%);
++	background: -o-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(40,74,122,1) 100%);
++	background: -ms-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(40,74,122,1) 100%);
++	background: linear-gradient(to bottom,  rgba(77,114,166,1) 1%,rgba(40,74,122,1) 100%);
++	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d72a6', endColorstr='#284a7a',GradientType=0 );
++}
++.messagebox-buttons .continue:active {
++	background: rgb(77,114,166);
++	background: -moz-linear-gradient(top,  rgba(77,114,166,1) 1%, rgba(85,116,160,1) 100%);
++	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(77,114,166,1)), color-stop(100%,rgba(85,116,160,1)));
++	background: -webkit-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(85,116,160,1) 100%);
++	background: -o-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(85,116,160,1) 100%);
++	background: -ms-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(85,116,160,1) 100%);
++	background: linear-gradient(to bottom,  rgba(77,114,166,1) 1%,rgba(85,116,160,1) 100%);
++	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d72a6', endColorstr='#5574a0',GradientType=0 );
++}
++
++
++.messagebox-buttons .danger {
++	color:#FFF;
++	background: rgb(224,45,81);
++	background: -moz-linear-gradient(top,  rgba(224,45,81,1) 0%, rgba(160,27,49,1) 100%);
++	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(224,45,81,1)), color-stop(100%,rgba(160,27,49,1)));
++	background: -webkit-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(160,27,49,1) 100%);
++	background: -o-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(160,27,49,1) 100%);
++	background: -ms-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(160,27,49,1) 100%);
++	background: linear-gradient(to bottom,  rgba(224,45,81,1) 0%,rgba(160,27,49,1) 100%);
++	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e02d51', endColorstr='#a01b31',GradientType=0 );
++	border: 1px solid #B11029;
++}
++.messagebox-buttons .danger:hover {
++	background: rgb(224,45,81);
++	background: -moz-linear-gradient(top,  rgba(224,45,81,1) 0%, rgba(144,20,41,1) 100%);
++	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(224,45,81,1)), color-stop(100%,rgba(144,20,41,1)));
++	background: -webkit-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(144,20,41,1) 100%);
++	background: -o-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(144,20,41,1) 100%);
++	background: -ms-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(144,20,41,1) 100%);
++	background: linear-gradient(to bottom,  rgba(224,45,81,1) 0%,rgba(144,20,41,1) 100%);
++	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e02d51', endColorstr='#901429',GradientType=0 );
++}
++.messagebox-buttons .danger:active {
++	background: rgb(224,45,81);
++	background: -moz-linear-gradient(top,  rgba(224,45,81,1) 0%, rgba(185,43,67,1) 100%);
++	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(224,45,81,1)), color-stop(100%,rgba(185,43,67,1)));
++	background: -webkit-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(185,43,67,1) 100%);
++	background: -o-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(185,43,67,1) 100%);
++	background: -ms-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(185,43,67,1) 100%);
++	background: linear-gradient(to bottom,  rgba(224,45,81,1) 0%,rgba(185,43,67,1) 100%);
++	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e02d51', endColorstr='#b92b43',GradientType=0 );
++}
++
++
++.messagebox-buttons .cancel {
++	color:#000;
++	background: rgb(255,204,26);
++	background: -moz-linear-gradient(top,  rgba(255,204,26,1) 0%, rgba(230,178,0,1) 100%);
++	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,204,26,1)), color-stop(100%,rgba(230,178,0,1)));
++	background: -webkit-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(230,178,0,1) 100%);
++	background: -o-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(230,178,0,1) 100%);
++	background: -ms-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(230,178,0,1) 100%);
++	background: linear-gradient(to bottom,  rgba(255,204,26,1) 0%,rgba(230,178,0,1) 100%);
++	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcc1a', endColorstr='#e6b200',GradientType=0 );
++	border: 1px solid #b38b00;
++}
++.messagebox-buttons .cancel:hover {
++	background: rgb(255,204,26);
++	background: -moz-linear-gradient(top,  rgba(255,204,26,1) 0%, rgba(218,168,0,1) 100%);
++	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,204,26,1)), color-stop(100%,rgba(218,168,0,1)));
++	background: -webkit-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(218,168,0,1) 100%);
++	background: -o-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(218,168,0,1) 100%);
++	background: -ms-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(218,168,0,1) 100%);
++	background: linear-gradient(to bottom,  rgba(255,204,26,1) 0%,rgba(218,168,0,1) 100%);
++	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcc1a', endColorstr='#daa800',GradientType=0 );
++}
++.messagebox-buttons .cancel:active {
++	background: rgb(255,204,26);
++	background: -moz-linear-gradient(top,  rgba(255,204,26,1) 0%, rgba(235,188,30,1) 100%);
++	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,204,26,1)), color-stop(100%,rgba(235,188,30,1)));
++	background: -webkit-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(235,188,30,1) 100%);
++	background: -o-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(235,188,30,1) 100%);
++	background: -ms-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(235,188,30,1) 100%);
++	background: linear-gradient(to bottom,  rgba(255,204,26,1) 0%,rgba(235,188,30,1) 100%);
++	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcc1a', endColorstr='#ebbc1e',GradientType=0 );
++}
+--- nfs-screenshot-1.0.orig/nfs/nfs-screenshot/index.html
++++ nfs-screenshot-1.0/nfs/nfs-screenshot/index.html
+@@ -6,6 +6,8 @@
+     <title>方德截图</title>
+     <link type="text/css" rel="stylesheet" href="css/style.css"/>
+     <link type="text/css" rel="stylesheet" href="js/jquery-ui-1.11.2/jquery-ui.css"/>
++	<link type="text/css" rel="stylesheet" href="css/messagebox.css"/>
++
+     <!--引入JS-->
+ 
+       <style>
+@@ -171,6 +173,7 @@
+ 		document.write("<scr"+"ipt src=\"js/arrow.js\"></sc"+"ript>");
+ 		document.write("<scr"+"ipt src=\"js/drawText.js\"></sc"+"ript>");
+ 		document.write("<scr"+"ipt src=\"js/gui.js\"></sc"+"ript>");
++		document.write("<scr"+"ipt src=\"js/messagebox.min.js\"></sc"+"ript>");
+ 		document.write("<scr"+"ipt src=\"js/canvasPainter.js\"></sc"+"ript>");
+ 		document.write("<scr"+"ipt src=\"js/about.js\"></sc"+"ript>");
+ 		
+--- nfs-screenshot-1.0.orig/nfs/nfs-screenshot/js/canvasPainter.js
++++ nfs-screenshot-1.0/nfs/nfs-screenshot/js/canvasPainter.js
+@@ -164,8 +164,21 @@ function captureFree(obj) {
+ 	if(!(obj == "clipboard")){
+ 		urlData = data.toString();
+ 		if(urlData.trim() == ""){
+-			show();		
+-		}else{
++		var result="";
++		$.MessageBox({
++					title:'警告',
++					content:'无法截图图像,所有可行的方法均已失效!',
++					type:'information',background:'white',
++					buttons:{confirm:{title:'确定',style:'continue'}},
++					userkey:true
++
++						},function(response)
++						{
++							return;
++						});
++		show();
++
++			}else{
+ 			loagImage(urlData);
+ 		}
+ 	}else{
+@@ -426,7 +439,7 @@ $(document).ready(function () {
+         if (t > 0) {
+             delay(t, "area", "");
+         } else {
+-            // setTimeout(function(){
++          //  setTimeout(function(){
+                 captureFree(AREA);
+             // },500);
+ 
+--- /dev/null
++++ nfs-screenshot-1.0/nfs/nfs-screenshot/js/messagebox.min.js
+@@ -0,0 +1,12 @@
++/**
++ * jQuery MessageBox Plugin
++ * Github: http://github.com/yali4/messagebox/
++ * Link: http://yalcinceylan.net/messagebox
++ * Copyright: October 2013
++ * Creator: Yalçın CEYLAN
++ * Github: http://github.com/yali4/
++ * Website: http://yalcinceylan.net
++ * License: MIT <http://opensource.org/licenses/mit-license.php>
++*/
++
++(function(e){var t=new Array;e.fn.MessageBox=function(t,n,r,i,s){var o=e(this);o[t](function(t){if(i&&i==true){t.returnValue=false;if(t.preventDefault){t.preventDefault()}}if(s&&s==true){t.cancelBubble=true;if(t.stopPropagation){t.stopPropagation()}}if(o.blur){o.blur()}e.MessageBox(n,r,o)})};e.MessageBox=function(n,r,i){var n=e.extend({title:"Title",content:"Description",type:"information",buttons:{confirm:{title:"Continue",style:"continue"},cancel:{title:"Cancel",style:"cancel"}},style:{modal:"messagebox-background",dialog:"messagebox-dialog",content:"messagebox-content",buttons:"messagebox-buttons",timeout:"messagebox-timer"},background:"#000",opacity:"0.6",animate:{open:false,close:false,speed:false},timeout:{second:false,screen:false},usekey:false,modalclose:false},n);var s={};s.hideDialog=function(e){if(typeof e==="undefined"){s.display=false}s.removeUseKey();s.dialog.hide();s.background.hide()};s.showDialog=function(e){if(typeof e==="undefined"){s.display=true}s.addUseKey();s.dialog.show();s.background.show()};s.createDialog=function(){s.background=e("<div/>",{"class":n.style.modal,css:{background:n.background,opacity:n.opacity}});s.background.appendTo("body");s.background.show();s.display=true;if(n.modalclose){s.background.click(function(){s.response=false;s.removeDialog()})}s.dialog=e("<div/>",{"class":n.style.dialog});s.content=e("<div/>",{"class":n.style.content});s.content.appendTo(s.dialog);s.title=e("<h1/>",{"class":"title",html:n.title});s.title.appendTo(s.content);s.description=e("<div/>",{"class":"description",html:n.content});s.description.appendTo(s.content);s.buttons=e("<div/>",{"class":n.style.buttons});s.buttons.appendTo(s.dialog);var t={};if(n.type=="confirmation"||n.type=="information"){if(n.buttons.confirm.title){t.confirm=e("<button/>",{"class":n.buttons.confirm.style,html:n.buttons.confirm.title});t.confirm.appendTo(s.buttons);t.confirm.click(function(){s.response=true;s.removeDialog()})}}if(n.type=="confirmation"){if(n.buttons.cancel.title){t.cancel=e("<button/>",{"class":n.buttons.cancel.style,html:n.buttons.cancel.title});t.cancel.appendTo(s.buttons);t.cancel.click(function(){s.response=false;s.removeDialog()})}}s.dialog.appendTo("body");s.width=s.dialog.width();s.height=s.dialog.height();s.windowWidth=document.documentElement.clientWidth;s.windowHeight=document.documentElement.clientHeight;s.leftCenter=(s.windowWidth-s.width)*.5;s.topCenter=(s.windowHeight-s.height)*.5;s.bottom=s.windowHeight-s.height;s.right=s.windowWidth-s.width;if(n.animate.speed&&n.animate.open){switch(n.animate.open){case"top":s.dialog.css({opacity:0,left:s.leftCenter}).animate({opacity:1,top:s.topCenter},n.animate.speed);break;case"left":s.dialog.css({opacity:0,top:s.topCenter}).animate({opacity:1,left:s.leftCenter},n.animate.speed);break;case"right":s.dialog.css({opacity:0,top:s.topCenter,left:s.right}).animate({opacity:1,left:s.leftCenter},n.animate.speed);break;case"bottom":s.dialog.css({opacity:0,left:s.leftCenter,top:s.bottom}).animate({opacity:1,top:s.topCenter},n.animate.speed);break;case"topLeft":s.dialog.css({opacity:0,top:0,left:0}).animate({opacity:1,top:s.topCenter,left:s.leftCenter},n.animate.speed);break;case"topRight":s.dialog.css({opacity:0,top:0,left:s.right}).animate({opacity:1,top:s.topCenter,left:s.leftCenter},n.animate.speed);break;case"bottomLeft":s.dialog.css({opacity:0,top:s.bottom,left:0}).animate({opacity:1,top:s.topCenter,left:s.leftCenter},n.animate.speed);break;case"bottomRight":s.dialog.css({opacity:0,top:s.bottom,left:s.right}).animate({opacity:1,top:s.topCenter,left:s.leftCenter},n.animate.speed);break;case"topFade":s.dialog.css({opacity:0,top:s.topCenter-25,left:s.leftCenter}).animate({opacity:1,top:s.topCenter},n.animate.speed);break;case"bottomFade":s.dialog.css({opacity:0,top:s.topCenter+25,left:s.leftCenter}).animate({opacity:1,top:s.topCenter},n.animate.speed);break}}else{s.background.show();s.dialog.css({left:s.leftCenter,top:s.topCenter})}s.timeout=e("<div/>",{"class":n.style.timeout,css:{display:"none"}});s.timeout.appendTo(s.buttons)};var o=function(){s.leftCenter=(document.documentElement.clientWidth-s.dialog.width())*.5;s.topCenter=(document.documentElement.clientHeight-s.dialog.height())*.5;s.dialog.stop().animate({left:s.leftCenter,top:s.topCenter})};var u={space:32,escape:27};var a=function(e){e=e||window.event;if(n.type=="confirmation"||n.type=="information"){if(e.keyCode==u.escape){e.returnValue=false;if(e.preventDefault){e.preventDefault()}s.response=false;s.removeDialog()}if(e.keyCode==u.enter||e.keyCode==u.space){e.returnValue=false;if(e.preventDefault){e.preventDefault()}s.response=true;s.removeDialog()}}};s.addEventListener=function(e,t,n,r){if(typeof e.addEventListener==="function"){e.addEventListener(t,n,r)}else if(e.attachEvent){e.attachEvent(t,n,r)}};s.removeEventListener=function(e,t,n,r){if(typeof e.removeEventListener==="function"){e.removeEventListener(t,n,r)}else if(e.detachEvent){e.detachEvent(t,n,r)}};s.getUniqueId=function(e){var t=[];for(var n=0;n<e;n++){t.push(Math.floor(Math.random()*10))}return t.join("")};s.addUseKey=function(){if(n.usekey){s.addEventListener(document,"keydown",a,false);s.addEventListener(document,"onkeydown",a,false)}};s.removeUseKey=function(){if(n.usekey){s.removeEventListener(document,"keydown",a,false);s.removeEventListener(document,"onkeydown",a,false)}};s.closeDialog=function(){s.dialog.remove();s.background.remove();s.removeEventListener(window,"resize",o,false);s.removeEventListener(window,"onresize",o,false);s.removeUseKey();if(typeof parseInt(n.timeout.second)=="number"&&parseInt(n.timeout.second)>0){clearInterval(s.interval)}if(typeof r==="function"){r.call(i,s.response)}delete t[s.id];var e=false;for(var u in t){e=u}if(e){if(t[e].display()){t[e].show()}}n=undefined;s=undefined};s.removeDialog=function(){if(typeof s.response==="undefined"){s.response=false}if(n.animate.speed&&n.animate.close){switch(n.animate.close){case"top":s.dialog.animate({top:"+=50"},"fast",function(){s.dialog.animate({opacity:0,top:0},n.animate.speed,function(){s.closeDialog()})});break;case"left":s.dialog.animate({left:"+=50"},"fast",function(){s.dialog.animate({opacity:0,left:0},n.animate.speed,function(){s.closeDialog()})});break;case"right":s.dialog.animate({left:"-=50"},"fast",function(){s.dialog.animate({opacity:0,left:s.right},n.animate.speed,function(){s.closeDialog()})});break;case"bottom":s.dialog.animate({top:"-=50"},"fast",function(){s.dialog.animate({opacity:0,top:s.bottom},n.animate.speed,function(){s.closeDialog()})});break;case"topLeft":s.dialog.animate({left:"+=50",top:"+=50"},"fast",function(){s.dialog.animate({opacity:0,left:0,top:0},n.animate.speed,function(){s.closeDialog()})});break;case"topRight":s.dialog.animate({left:"-=50",top:"+=50"},"fast",function(){s.dialog.animate({opacity:0,left:s.right,top:0},n.animate.speed,function(){s.closeDialog()})});break;case"bottomLeft":s.dialog.animate({left:"+=50",top:"-=50"},"fast",function(){s.dialog.animate({opacity:0,left:0,top:s.bottom},n.animate.speed,function(){s.closeDialog()})});break;case"bottomRight":s.dialog.animate({left:"-=50",top:"-=50"},"fast",function(){s.dialog.animate({opacity:0,left:s.right,top:s.bottom},n.animate.speed,function(){s.closeDialog()})});break;case"fadeOut":s.dialog.animate({opacity:0},n.animate.speed,function(){s.closeDialog()});break}}else{s.closeDialog()}};s.insertDialog=function(){for(var e in t){t[e].hide()}if(typeof s.id==="undefined"){s.id=s.getUniqueId(48)}s.createDialog();s.addEventListener(window,"resize",o,false);s.addEventListener(window,"onresize",o,false);s.addUseKey();if(typeof parseInt(n.timeout.second)=="number"&&parseInt(n.timeout.second)>0){s.remaining=parseInt(n.timeout.second);s.timeout.html(s.remaining);if(n.timeout.screen){s.timeout.css({display:"block"})}s.interval=setInterval(function(){if(s.remaining>0){s.remaining--;s.timeout.html(s.remaining)}if(s.remaining<=0){s.removeDialog()}},1e3)}t[s.id]={display:function(){return s.display},hide:function(){s.hideDialog(true)},show:function(){s.showDialog(true)}};return{title:function(e){s.title.html(e)},content:function(e){s.description.html(e)},hide:function(){s.hideDialog()},show:function(){s.showDialog()},close:function(){s.removeDialog()}}};return s.insertDialog()}})(jQuery)

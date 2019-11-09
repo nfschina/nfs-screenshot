@@ -1,0 +1,15 @@
+步骤1：
+进入到源码目录，右键调出命令行，执行如下命令：
+zip -r fd-screenshot.nw css img java js python .idea .temp index.html package.json
+完成后，在源码目录中会出现一个fd-screenshot.nw的文件
+步骤2:
+在github上下载note-webkit编译执行环境，然后解压。（目录可以随意）
+将步骤1生成的fd-screenshot.nw放入到note-webkit解压后的文件夹中，执行
+cat nw fd-screenshot.nw > fd-screenshot && chmod +x fd-screenshot
+得到fd-screenshot的一个可执行文件
+步骤3：
+将fd-screenshot拷贝到fd-screenshot_v0.5.7_i386/usr/bin/下面即可。
+然后在fd-screenshot_v0.5.7_i386的文件夹外面，执行
+dpkg-deb -b fd-screenshot_v0.5.7_i386/即完成deb打包。
+
+注意：64位版本的话，note-webkit选择64位的编译环境即可。版本选择0.10版本以上。但不要选择0.11

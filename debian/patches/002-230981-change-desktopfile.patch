@@ -1,0 +1,42 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ nfs-screenshot (1.0-8) trusty; urgency=utility
+ .
+   *[230970]:修改在系统重启的时候出现截图关闭服务正在停止，系统重启卡住的问题
+   *问题原因:开机启动脚本问题
+   *问题解决方案：去掉开机启动脚本
+ .
+   *[230981]:修改在截图保存的时候保存窗口在截图窗口后的问题
+   *问题原因:dekstop文件存在问题
+   *问题解决方案：将desktop中startupnotify的值设为false
+Author: zhanglei <zhanglei_hlj@nfs-china.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2017-03-23
+
+--- nfs-screenshot-1.0.orig/nfs-screenshot.desktop
++++ nfs-screenshot-1.0/nfs-screenshot.desktop
+@@ -6,7 +6,7 @@ Exec=/usr/bin/nfs-screenshot
+ Terminal=false
+ Type=Application
+ Categories=Utility;
+-StartupNotify=true
++StartupNotify=false
+ Keywords=Run;
+ Actions=New
+ Name[zh_CN]=方德截图

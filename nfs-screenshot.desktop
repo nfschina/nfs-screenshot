@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=NFS Screenshot
+Comment=友好、便捷的截图软件
+Icon=/usr/share/pixmaps/nfs-screenshot.png
+Exec=/usr/bin/nfs-screenshot
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=false
+Keywords=Run;
+Actions=New
+Name[zh_CN]=方德截图

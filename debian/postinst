@@ -1,0 +1,27 @@
+#! /bin/sh
+#path=~/.config
+#path1=/autostart
+#directory="${path}""${path1}"
+#echo ${directory}
+#cd ${path}
+#ls
+#if [ -d "${directory}" ];then
+#	echo "不需要操作"
+#else
+#	mkdir "${directory}"
+#fi
+#cd ${directory}
+
+#path=/etc/xdg/autostart
+#cd ${path}
+#cp -rf /usr/share/applications/nfs-screenshot/nfs-screenshot-close.desktop .
+#cp -rf /usr/share/applications/nfs-screenshot/nfs-screenshot-start.desktop .
+#cd /usr/bin/nfs/nfs-screenshot/
+#./user_path.sh
+rm -rf /usr/share/applications/nfs-screenshot/nfs-screenshot-close.desktop 
+rm -rf /usr/share/applications/nfs-screenshot/nfs-screenshot-start.desktop
+#mv /usr/bin/nfs-screenshot-autoclose /etc/init.d/
+#mv /usr/bin/nfs-screenshot-autostart /etc/init.d/
+#cd /etc/init.d
+#sudo update-rc.d nfs-screenshot-autostart defaults 94
+#sudo update-rc.d nfs-screenshot-autoclose defaults 95

@@ -1,0 +1,179 @@
+/**
+ * jQuery MessageBox Plugin
+ * Github: http://github.com/yali4/messagebox/
+ * Link: http://yalcinceylan.net/messagebox
+ * Copyright: October 2013
+ * Creator: Yalçın CEYLAN
+ * Github: http://github.com/yali4/
+ * Website: http://yalcinceylan.net
+ * License: MIT <http://opensource.org/licenses/mit-license.php>
+*/
+
+.messagebox-background {
+	position:fixed;
+	display:none;
+	margin:0; padding:0;
+	top:0; left:0;
+	width:100%; height:100%;
+	z-index:999;
+}
+.messagebox-dialog {
+	width:280px;
+	height:140px;
+	position:fixed;
+	top:0; left:0;
+	margin:0; padding:0;
+	z-index:9999;
+	background:#E8ECF6;
+	border-radius:3px;
+	border:solid 1px #808080;
+	overflow:hidden;
+}
+
+.messagebox-content {
+	min-width:300px; maix-width:450px;
+	position:relative; display:block;
+}
+.messagebox-content > h1 {
+	position:relative; 
+/*	display:block;*/
+	font:15px Helvetica; color:#FFFFFF;
+	font-weight:bold;	
+	background-color:#53575D;
+	margin:0; padding:5px 5px;
+	border-bottom:1px solid #d5d5d5;
+}
+.messagebox-content > div {
+	margin:0; padding:15px;
+	font:12px Helvetica;
+	color:#000; line-height:20px;
+        max-height:100px; overflow:auto;
+}
+.messagebox-buttons {
+	position:relative; display:block;
+	padding:10px 10px; margin:0 10px;
+	text-align:right;
+/*	border-top: 1px solid #ddd;*/
+}
+.messagebox-buttons > button {
+	margin-right:10px;
+}
+.messagebox-timer {
+	position:absolute; padding:10px;
+	right:5px; top:5px; display:none;
+	font:12px Helvetica; color:#585858;
+	font-weight:bold;
+}
+
+.messagebox-buttons .cancel,
+.messagebox-buttons .continue,
+.messagebox-buttons .danger {
+	position:relative;
+	display:inline-block;
+	height:25px; line-height:25px;
+	padding:0px 10px 0px 10px;
+	font:12px Helvetica;
+	border-radius: 2px;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+	outline:0; cursor:pointer;
+}
+
+.messagebox-buttons .continue {
+	color:#000;
+	background: rgb(220,220,220);
+	background: -moz-linear-gradient(top, rgba(220,220,220,1) 0%, rgba(0,220,220,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,191,255,1)), color-stop(100%,rgba(0,191,255,1)));
+	background: -webkit-linear-gradient(top, rgba(0,220,220,220,1) 0%,rgba(220,220,220,1) 100%);
+	background: -o-linear-gradient(top, rgba(220,220,220,1) 0%,rgba(220,220,220,1) 100%);
+	background: -ms-linear-gradient(top, rgba(220,220,220,1) 0%,rgba(220,220,220,1) 100%);
+	background: linear-gradient(to bottom, rgba(220,220,220,1) 0%,rgba(220,220,220,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d72a6', endColorstr='#3d5a84',GradientType=0 );
+/*	border: 1px solid #00BFFF;*/
+}
+.messagebox-buttons .continue:hover {
+	background: rgb(220,220,220);
+/*	background: -moz-linear-gradient(top,  rgba(77,114,166,1) 1%, rgba(40,74,122,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(77,114,166,1)), color-stop(100%,rgba(40,74,122,1)));
+	background: -webkit-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(40,74,122,1) 100%);
+	background: -o-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(40,74,122,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(40,74,122,1) 100%);
+	background: linear-gradient(to bottom,  rgba(77,114,166,1) 1%,rgba(40,74,122,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d72a6', endColorstr='#284a7a',GradientType=0 );*/
+}
+.messagebox-buttons .continue:active {
+	background: rgb(220,220,220);
+/*	background: -moz-linear-gradient(top,  rgba(77,114,166,1) 1%, rgba(85,116,160,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(77,114,166,1)), color-stop(100%,rgba(85,116,160,1)));
+	background: -webkit-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(85,116,160,1) 100%);
+	background: -o-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(85,116,160,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(77,114,166,1) 1%,rgba(85,116,160,1) 100%);
+	background: linear-gradient(to bottom,  rgba(77,114,166,1) 1%,rgba(85,116,160,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d72a6', endColorstr='#5574a0',GradientType=0 );*/
+}
+
+.messagebox-buttons .danger {
+	color:#FFF;
+	background: rgb(224,45,81);
+	background: -moz-linear-gradient(top,  rgba(224,45,81,1) 0%, rgba(160,27,49,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(224,45,81,1)), color-stop(100%,rgba(160,27,49,1)));
+	background: -webkit-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(160,27,49,1) 100%);
+	background: -o-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(160,27,49,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(160,27,49,1) 100%);
+	background: linear-gradient(to bottom,  rgba(224,45,81,1) 0%,rgba(160,27,49,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e02d51', endColorstr='#a01b31',GradientType=0 );
+	border: 1px solid #B11029;
+}
+.messagebox-buttons .danger:hover {
+	background: rgb(224,45,81);
+	background: -moz-linear-gradient(top,  rgba(224,45,81,1) 0%, rgba(144,20,41,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(224,45,81,1)), color-stop(100%,rgba(144,20,41,1)));
+	background: -webkit-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(144,20,41,1) 100%);
+	background: -o-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(144,20,41,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(144,20,41,1) 100%);
+	background: linear-gradient(to bottom,  rgba(224,45,81,1) 0%,rgba(144,20,41,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e02d51', endColorstr='#901429',GradientType=0 );
+}
+.messagebox-buttons .danger:active {
+	background: rgb(224,45,81);
+	background: -moz-linear-gradient(top,  rgba(224,45,81,1) 0%, rgba(185,43,67,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(224,45,81,1)), color-stop(100%,rgba(185,43,67,1)));
+	background: -webkit-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(185,43,67,1) 100%);
+	background: -o-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(185,43,67,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(224,45,81,1) 0%,rgba(185,43,67,1) 100%);
+	background: linear-gradient(to bottom,  rgba(224,45,81,1) 0%,rgba(185,43,67,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e02d51', endColorstr='#b92b43',GradientType=0 );
+}
+
+
+.messagebox-buttons .cancel {
+	color:#000;
+	background: rgb(220,220,220);
+/*	background: -moz-linear-gradient(top,  rgba(255,204,26,1) 0%, rgba(230,178,0,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,204,26,1)), color-stop(100%,rgba(230,178,0,1)));
+	background: -webkit-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(230,178,0,1) 100%);
+	background: -o-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(230,178,0,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(230,178,0,1) 100%);
+	background: linear-gradient(to bottom,  rgba(255,204,26,1) 0%,rgba(230,178,0,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcc1a', endColorstr='#e6b200',GradientType=0 );
+	border: 1px solid #b38b00;*/
+}
+.messagebox-buttons .cancel:hover {
+	background: rgb(220,220,220);
+	/*background: -moz-linear-gradient(top,  rgba(255,204,26,1) 0%, rgba(218,168,0,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,204,26,1)), color-stop(100%,rgba(218,168,0,1)));
+	background: -webkit-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(218,168,0,1) 100%);
+	background: -o-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(218,168,0,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(218,168,0,1) 100%);
+	background: linear-gradient(to bottom,  rgba(255,204,26,1) 0%,rgba(218,168,0,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcc1a', endColorstr='#daa800',GradientType=0 );*/
+}
+.messagebox-buttons .cancel:active {
+	background: rgb(220,220,220);
+/*	background: -moz-linear-gradient(top,  rgba(255,204,26,1) 0%, rgba(235,188,30,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,204,26,1)), color-stop(100%,rgba(235,188,30,1)));
+	background: -webkit-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(235,188,30,1) 100%);
+	background: -o-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(235,188,30,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(255,204,26,1) 0%,rgba(235,188,30,1) 100%);
+	background: linear-gradient(to bottom,  rgba(255,204,26,1) 0%,rgba(235,188,30,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcc1a', endColorstr='#ebbc1e',GradientType=0 );*/
+}

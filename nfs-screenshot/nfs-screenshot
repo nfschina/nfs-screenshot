@@ -1,0 +1,22 @@
+#!/bin/bash	
+#ID=`ps -ef |grep -w '/usr/bin/nw /usr/bin/nfs2'|grep -v grep|awk '{print $2}'`
+#echo $ID
+#if [ ! -n "$ID" ];then
+#	echo "wait"
+#else 
+#	for id in $ID
+#        do
+#               kill -9 $id
+#        done
+#fi
+
+ProcNumber=`ps -ef |grep -w '/usr/bin/nw /usr/bin/nfs/nfs-screenshot'|grep -v grep|wc -l`
+#echo $ProcNumber
+if [ $ProcNumber -le 0 ];then
+	
+	exec /usr/bin/nw /usr/bin/nfs/nfs-screenshot
+else  
+   wmctrl -a 方德截图 && wmctrl -r 方德截图 -b add,maximized_vert,maximized_horz   
+  	exec /usr/bin/nw /usr/bin/nfs/nfs-screenshot
+        #exit 
+fi

@@ -1,0 +1,26 @@
+#!/bin/bash
+while :
+do	
+	ID=` whoami | awk '{print $1}' `
+	echo $ID
+	if [ ! -n "$ID" ];then
+		echo "IS NULL"
+	else
+		#这里把之前启动的线程杀掉
+		TH=`ps -ef |grep -w '/usr/bin/nw /usr/bin/nfs2'|grep -v grep|awk '{print $2}'`
+		if [ ! -n "$TH" ];then
+			echo "wait"
+		else 
+			for id in $TH
+        		do
+        	       		kill -9 $id
+        		done
+			break;
+		fi
+	fi
+        #ID=`ps -ef |grep -w '/usr/bin/nw /usr/bin/nfs2'|grep -v grep|awk '{print $2}'`
+        #echo $ID
+done
+exit 0
+
+

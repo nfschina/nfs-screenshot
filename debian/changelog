@@ -1,0 +1,397 @@
+nfs-screenshot (1.0-37) trusty; urgency=medium
+
+  * [0353698]: 方德截图-切换后的用户保存图片未能保存。
+
+ -- support  <support_os@sari.ac.cn>  Wed, 4 Sep 2019 14:56:38 +0800
+
+nfs-screenshot (1.0-36) trusty; urgency=medium
+
+  * [#0353392]:保存截图窗口另存为和图片格式未汉化。
+
+ -- support  <support_os@sari.ac.cn>  Thu, 29 Aug 2019 17:56:38 +0800
+
+nfs-screenshot (1.0-35) trusty; urgency=medium
+
+  * [0353569]:点击保存但是取消该操作，点击右上角X，建议
+              给出提示信息
+  * [0353568]:截图后，直接点击右上角X，建议给出提示。
+  * [专用版SV3.1 0353565]: 方德截图保存图片时，在保存对
+              话框弹出之前闪现“保存失败”的字样
+  * 去掉调试信息。              
+
+ -- support  <support_os@sari.ac.cn>  Wed, 28 Aug 2019 10:21:38 +0800
+
+nfs-screenshot (1.0-34) trusty; urgency=medium
+
+  * [0353569]:点击保存但是取消该操作，点击右上角X，建议给出提示信息
+  * [0353568]:截图后，直接点击右上角X，建议给出提示。
+  * [专用版SV3.1 0353565]: 方德截图保存图片时，在保存对话框弹出之前闪现“保存失败”的字样
+
+ -- support  <support_os@sari.ac.cn>  Mon, 26 Aug 2019 11:22:38 +0800
+
+nfs-screenshot (1.0-33) trusty; urgency=medium
+
+  * [0353544]:截图工具：对截取的图片进行编辑后点击界面右上角的“关闭”按钮，提示框风格与软件整体不太统一，建议优化.
+
+ -- support  <support_os@sari.ac.cn>  Thu, 22 Aug 2019 14:29:38 +0800
+
+nfs-screenshot (1.0-32) trusty; urgency=medium
+
+  * [#0353392]:保存截图窗口另存为和图片格式未汉化
+
+ -- support  <support_os@sari.ac.cn>  Mon, 12 Aug 2019 15:32:38 +0800
+
+nfs-screenshot (1.0-31) trusty; urgency=medium
+
+  * [#0352744]:共性问题：截图工具-“复制到剪切板”-无法复制图片中编辑的内容。
+  * [#0352745]:共性问题：截图工具-保存时在文件选择框中点击取消后，无法再次保存同时编辑功能失效
+
+ -- support  <support_os@sari.ac.cn>  Thu, 16 May 2019 11:09:38 +0800
+
+nfs-screenshot (1.0-30) trusty; urgency=medium
+
+  * 修改0352577截图工具-重复命名的提示未汉.
+
+ -- support  <support_os@sari.ac.cn>  Tue, 16 Apr 2019 11:09:38 +0800
+
+nfs-screenshot (1.0-29) trusty; urgency=medium
+
+  * 修改changelog
+
+ -- support  <support_os@sari.ac.cn>  Wed, 10 Apr 2019 17:09:38 +0800
+
+nfs-screenshot (1.0-28) trusty; urgency=medium
+
+  * [#0352543]双系统：对自由截取后的图片进行编辑时箭头方向总往下倒
+
+ -- support  <support_os@sari.ac.cn>  Wed, 10 Apr 2019 15:16:46 +0800
+
+nfs-screenshot (1.0-27) trusty; urgency=medium
+
+  * [#0352522]截图工具保存图片时相同文件名没有任何提醒直接替换之前相同文件名的图片
+
+ -- support  <support_os@sari.ac.cn>  Wed, 10 Apr 2019 15:16:46 +0800
+
+nfs-screenshot (1.0-26) trusty; urgency=utility
+
+    * [#0352522]截图工具保存图片时相同文件名没有任何提醒直接替换之前相同文件名的图片。
+
+ -- support  <support_os@sari.ac.cn> Tue, 9 Apr 2019 14:28:00 +0800
+
+nfs-screenshot (1.0-25) trusty; urgency=utility
+
+    * [#0352356]建议截图增加撤销的的快捷键和按钮,加一个“复制到剪切板”的功能入口
+
+ -- support  <support_os@sari.ac.cn> Mon, 8 Apr 2019 14:28:00 +0800
+
+nfs-screenshot (1.0-24) trusty; urgency=utility
+
+    * not show tray icon
+
+ -- support  <support_os@sari.ac.cn> Fri, 29 Mar 2019 14:28:00 +0800
+
+nfs-screenshot (1.0-23) trusty; urgency=utility
+
+    * 修改截图不能拖拽没有还原按钮的问题。
+
+ -- support  <support_os@sari.ac.cn> Fri, 1 Mar 2019 15:09:00 +0800
+
+nfs-screenshot (1.0-22) trusty; urgency=utility
+
+    * 修改0349490:打开方德截图工具，使用全屏截图，滑动到图片最底部，使用箭头工具在图片底部划不出直线箭头；（概率：15/15台 验证15台每台均有此现象）。;
+
+ -- support  <support_os@sari.ac.cn> Fri, 7 Sep 2018 11:09:00 +0800
+
+nfs-screenshot (1.0-21) trusty; urgency=utility
+
+    * 修改版权信息;
+
+ -- support  <support_os@sari.ac.cn> Mon, 9 Jul 2018 14:21:00 +0800
+
+nfs-screenshot (1.0-20) trusty; urgency=utility
+
+    * 修改版权信息;
+
+ -- support  <support_os@sari.ac.cn> Thu, 14 Apr 2018 15:18:00 +0800
+
+nfs-screenshot (1.0-19) trusty; urgency=utility
+
+    * 更新logo图标;
+
+ -- support  <support_os@sari.ac.cn> Mon, 23 Apr 2018 15:18:00 +0800
+
+nfs-screenshot (1.0-18) trusty; urgency=utility
+
+    * 升级版权;
+
+ -- support  <support_os@sari.ac.cn> Mon, 16 Apr 2018 10:30:00 +0800
+
+nfs-screenshot (1.0-17) trusty; urgency=utility
+
+    *0348275: 系统英文模式下，截图工具的保存页面存在汉字：“保存为”和“图片格式”;
+
+ -- dongzhen <dongzhen_hlj@nfschina.com> Tue, 03 Apr 2018 15:05:00 +0800
+
+nfs-screenshot (1.0-16) trusty; urgency=utility
+
+    *ZCC build
+
+ -- dongzhen <dongzhen_hlj@nfschina.com> Wed,28 Mar 2018 15:14:00 +0800
+
+nfs-screenshot (1.0-15) trusty; urgency=utility
+
+    *238153：方德截图-截图后点击保存按钮，弹出的”保存为“窗口永远在屏幕最上方，即点开其他应用后，方德截图的”保存为“窗口仍在其他应用窗口上方
+
+ -- dongzhen <dongzhen_hlj@nfschina.com> Fri,24  Sep 2017 17:06:00 +0800
+
+nfs-screenshot (1.0-14) trusty; urgency=utility
+
+    *[基础版3.1.011 0237799]:
+    * 本地化支持-英文系统下，文件管理器的home->help->All topics弹出的系统帮助文档中存在多处中文。
+    * nfs-screenshot截图工具存在bug0237799问题
+ -- wangmin <wangmin@nfschina.com> Tue,21  Nov 2017 15:00:00 +0800
+
+
+nfs-screenshot (1.0-13) trusty; urgency=utility
+
+    *modify english name
+ -- dongzhen <dongzhen_hlj@nfschina.com> Fri, 07 Nov 2017 10:32:00 +0800
+
+
+nfs-screenshot (1.0-12) trusty; urgency=utility
+
+    *[237906]:fixed bug237906 处理任务栏图标多个显示问题
+ -- wangmin <wangmin@nfschina.com> Fri, 27 Oct 2017 9:41:00 +0800
+
+nfs-screenshot (1.0-11) trusty; urgency=utility
+
+    *[236648]:点击空白处使保存窗口不在最前方显示
+    *问题原因:保存窗口没有设置窗口是否在前端显示
+    *问题解决方案：设置窗口始终在最前端显示
+
+    *[236671]:在全屏截图图片最下方使用矩形框等出现延时现象
+    *问题原因:设置画布大小存在问题
+    *问题解决方案：根据图片大小设置画布大小
+
+    *[236537]:点击界面中任意地方弹出无法截图提示
+    *问题原因:在自由截取没有图片的时候弹出提示
+    *问题解决方案：修改在没有图片的时候截取全屏
+
+ -- zhanglei <zhanglei_hlj@nfs-china.com> Fri, 8 Sep 2017 11:47:00 +0800
+
+nfs-screenshot (1.0-10) trusty; urgency=utility
+
+    *[233360]:修改不保存就关闭无提示
+    *问题原因:没有判断提示
+    *问题解决方案：修改后设置标记，关闭时进行判断并弹出提示消息
+
+ -- zhanglei <zhanglei_hlj@nfs-china.com> Wed, 7 Jun 2017 10:41:00 +0800
+
+nfs-screenshot (1.0-9) trusty; urgency=utility
+ 
+    *[232227]:修改快捷键冲突的问题
+    *问题原因:快捷键注册冲突
+    *问题解决方案：去掉重复的快捷键，修改ctrl+z为ctrl+alt+z
+ 
+ -- zhanglei <zhanglei_hlj@nfs-china.com> Tue, 25 Apr 2017 17:49:00 +0800
+
+nfs-screenshot (1.0-8) trusty; urgency=utility
+  *[230970]:修改在系统重启的时候出现截图关闭服务正在停止，系统重启卡住的问题
+  *问题原因:开机启动脚本问题
+  *问题解决方案：去掉开机启动脚本
+
+  *[230981]:修改在截图保存的时候保存窗口在截图窗口后的问题
+  *问题原因:dekstop文件存在问题
+  *问题解决方案：将desktop中startupnotify的值设为false
+
+ -- zhanglei <zhanglei_hlj@nfs-china.com> Tue, 23 Mar 2017 14:53:00 +0800
+
+nfs-screenshot (1.0-7) trusty; urgency=utility
+  *build on 2.A
+
+ -- zhanglei <zhanglei_hlj@nfs-china.com> Mon, 20 Mar 2017 16:51:00 +0800
+
+nfs-screenshot (1.0-6) trusty; urgency=utility
+  *[229881]:修改在截图失败的时候弹出警告对话框
+  *问题原因:隐藏窗口慢的时候截取窗口不成功
+  *问题解决方案:在不成功时弹出警告窗口
+
+ -- zhanglei <zhanglei_hlj@nfs-china.com> Thu, 7 Mar 2017 14:45:00 +0800
+
+nfs-screenshot (1.0-5) trusty; urgency=utility
+  *修改系统适配问题。
+  *修改源码为quilt形式。
+
+ -- dongzhen <dongzhen_hlj@nfs-china.com> Thu, 23 Feb 2017 10:47:00 +0800
+
+nfs-screenshot (1.0.4) trusty; urgency=utility
+  
+  * 修复了自由截图快捷键无法实现的问题
+  * 修复了自由截图有时截图不成功的问题
+  * 修复了在不同用户下无法打开软件的问题
+
+ -- support_os <support_os@sari.ac.cn>  Thu, 12 Jan 2017 14:37:00 +0800
+
+nfs-screenshot (1.0.3) trusty; urgency=utility
+  
+  * Add tip that cannot open in different users
+
+ -- support_os <support_os@sari.ac.cn>  Wed, 4 Jan 2017 15:56:00 +0800
+
+nfs-screenshot (1.0.2) trusty; urgency=utility
+  
+  * modify the copyright information
+
+ -- huangjie <huangjie@nfschina.com>  Mon, 12 Dec 2016 15:17:00 +0800
+
+nfs-screenshot (1.0.1) trusty; urgency=utility
+  
+  * modify the desktop file
+
+ -- huangjie <huangjie@nfschina.com>  Mon, 07 Dec 2016 12:58:00 +0800
+nfs-screenshot (1.0.0) trusty; urgency=utility
+  
+  * fixed issue with program slow startup for the first time
+
+ -- huangjie <huangjie@nfschina.com>  Mon, 28 Nov 2016 09:58:00 +0800
+
+nfs-screenshot (2016.07.12+amd64+v0.9.4) trusty; urgency=utility
+  
+  * fixed issue with program slow startup for the first time
+
+ -- liangjian <liangjian_wx@nfschina.com>  Tue, 12 July 2016 09:03:00 +0800
+
+nfs-screenshot (2016.07.11+amd64+v0.9.3) trusty; urgency=utility
+  
+  * fixed issue with program slow startup for the first time
+
+ -- liangjian <liangjian_wx@nfschina.com>  Mon, 11 July 2016 09:03:00 +0800
+
+nfs-screenshot (2016.06.03+amd64+v0.9.2) trusty; urgency=utility
+  
+  * modify bug 14417 19377
+
+ -- liangjian <liangjian_wx@nfschina.com>  Fri, 3 Jun 2016 17:18:00 +0800
+
+nfs-screenshot (2016.05.05+amd64+v0.9.2) trusty; urgency=utility
+  
+  * Free screenshots mode the right mouse button no response
+
+ -- liangjian <liangjian_wx@nfschina.com>  Thu, 5 May 2016 08:35:00 +0800
+
+nfs-screenshot (2016.04.26+amd64+v0.9.1) trusty; urgency=utility
+  
+  * start slow
+
+ -- liangjian <liangjian_wx@nfschina.com>  Wed, 20 Apr 2016 10:30:00 +0800
+
+nfs-screenshot (2016.04.20+amd64+v0.9.0) trusty; urgency=utility
+  
+  * Fixed menu bar boot
+
+ -- liangjian <liangjian_wx@nfschina.com>  Wed, 20 Apr 2016 10:30:00 +0800
+
+nfs-screenshot (2016.04.19+amd64+v0.8.9) trusty; urgency=utility
+  
+  * to revise  white screen issue
+
+ -- liangjian <liangjian_wx@nfschina.com>  Tue, 19 Apr 2016 15:42:00 +0800
+
+nfs-screenshot (2016.04.18+amd64+v0.8.8) trusty; urgency=utility
+  
+  * to revise  white screen issue
+
+ -- liangjian <liangjian_wx@nfschina.com>  Mon, 18 Apr 2016 09:14:00 +0800
+
+nfs-screenshot (2016.04.12+amd64+v0.8.8) trusty; urgency=utility
+  
+  * modify bug #19078 #18852 #18787 #18786	  
+
+ -- liangjian <liangjian_wx@nfschina.com>  Tue, 12 Apr 2016 15:03:00 +0800
+
+nfs-screenshot (2016.03.04+amd64+v0.8.7) trusty; urgency=utility
+  
+  * modify bug #18778	  
+
+ -- liangjian <liangjian_wx@nfschina.com>  Fri, 04 Mar 2016 17:14:00 +0800
+
+nfs-screenshot (2016.03.02+amd64+v0.8.7) trusty; urgency=utility
+  
+  * modify bug #16053 #18409	  
+
+ -- liangjian <liangjian_wx@nfschina.com>  Wed, 02 Mar 2016 14:58:00 +0800
+
+nfs-screenshot (2016.02.22+amd64+v0.8.6) trusty; urgency=utility
+  
+  * modify #18635 #18227
+  * screenshot function reset	  
+
+ -- liangjian <liangjian_wx@nfschina.com>  Mon, 22 Feb 2016 14:58:00 +0800
+
+nfs-screenshot (2016.01.20+amd64+v0.8.5) trusty; urgency=utility
+  
+  * modify bug
+  * text function to realize
+  * undo function to realize
+  
+ -- liangjian <liangjian_wx@nfschina.com>  Wed, 20 Jan 2016 09:20:00 +0800
+
+nfs-screenshot (2015.12.24+amd64+v0.8.2) trusty; urgency=utility
+  
+  * fixed free screenshot bug
+  
+ -- liangjian <liangjian_wx@nfschina.com>  Thu, 24 Dec 2015 16:27:00 +0800
+
+nfs-screenshot (2015.12.02+amd64+v0.8.1) trusty; urgency=utility
+  
+  * add screenshots with the print key
+  * support clipboardsss
+  
+ -- liangjian <liangjian_wx@nfschina.com>  Wed, 02 Dec 2015 15:35:00 +0800
+
+nfs-screenshot (2015.10.23+amd64+v0.8) trusty; urgency=utility
+  
+ * modify bug
+
+ -- liangjian <liangjian_wx@nfschina.com>  Fri, 23 Oct 2015 16:27:00 +0800
+
+nfs-screenshot (2015.09.17+amd64+v0.79) trusty; urgency=utility
+
+  * Fixed the problem of maximizing the menu after opening
+  * Fixed menu display problem	
+
+ -- liangjian <liangjian_wx@nfschina.com>  Thu, 17 Sep 2015 11:10:00 +0800
+
+nfs-screenshot (2015.09.10+amd64+v0.78) trusty; urgency=utility
+  
+  *  add eraser
+
+ -- liangjian <liangjian_wx@nfschina.com>  Tue, 10 Sep 2015 11:10:00 +0800
+
+
+nfs-screenshot (2015.05.05+amd64+v0.75) trusty; urgency=office
+
+  *  Repair  "Enter" key bug  
+
+ -- liangjian <liangjian_wx@nfschina.com>  Tue, 5 May 2015 14:23:00 +0800
+ 
+nfs-screenshot (2015.04.17+amd64+v0.71) trusty; urgency=office
+
+  *  Repair the hotkey function 
+  *  Repair function minimization
+
+ -- liangjian <liangjian_wx@nfschina.com>  Fri, 17 Apr 2015 15:23:00 +0800
+
+nfs-screenshot (2015.03.26+amd64+v0.6) trusty; urgency=office
+
+  * Repair drawing board tools cannot be used 
+  
+ -- liangjian <liangjian_wx@nfschina.com>  Thu, 26 Mar 2015 10:57:00 +0800
+
+nfs-screenshot (2015.01.25+amd64+v0.5.8) trusty; urgency=office
+
+  * UI Adjustment
+  * BUG modify
+
+ -- liangjian <liangjian_wx@nfschina.com>  Tue, 25 Jan 2015 13:59:00 +0800
+

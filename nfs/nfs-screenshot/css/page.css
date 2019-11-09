@@ -1,0 +1,4 @@
+@charset "UTF-8";
+/* CSS Document */
+.main { width:660px; height:500px;  position:absolute; display:block; margin:0 auto; }
+.top{ width:auto; height:80px; }

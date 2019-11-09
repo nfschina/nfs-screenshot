@@ -1,0 +1,14 @@
+Source: nfs-screenshot
+Section: utils
+Priority: optional
+Maintainer: support_os@sari.ac.cn
+Standards-Version: 1.0.0
+Build-Depends: debhelper (>= 8.0.0),libgtk2.0-dev,libatk1.0-dev,libpangocairo-1.0-0,libnss3-dev,libcurl3,libcurl3-dbg,libcurl3-dbg,libcurl3-dbg,libidn11-dev,libpango1.0-dev,libpangoxft-1.0-0,librtmp1,librtmp-dev,libxft2,libcairo2-dev,libpangox-1.0-dev,libfreetype6-dev,libfontconfig1-dev,libnspr4-dev,libgconf2-dev,libxext-dev,libxfixes-dev,libxrender-dev,libxcomposite-dev,libasound2-dev,libxdamage-dev,libxtst-dev,libnotify-dev,libgtk-3-dev,libgdk-pixbuf2.0-dev,libgdk3.0-cil
+Homepage:http://cup-os.ac.cn
+
+Package: nfs-screenshot
+Architecture: amd64
+Depends:python-wnck,python-xlib,python-tk,wmctrl,python-virtkey
+Recommends:
+Multi-Arch:
+Description: This is screenshot tool.

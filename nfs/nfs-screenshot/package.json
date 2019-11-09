@@ -1,0 +1,15 @@
+{
+  "main":"index.html",
+  "name": "nfs-screenshot",
+  "version": "0.0.1",
+  "window":{
+    "title":"截图软件",
+    "icon":"img/logo.png",
+    "toolbar": false,
+    "frame":false,
+    "resizable":true,
+    "show_in_taskbar":true,
+    "kiosk":false,
+    "show":false
+  }
+}

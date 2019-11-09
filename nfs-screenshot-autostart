@@ -1,0 +1,9 @@
+#!/bin/bash
+ProcNumber=`ps -ef |grep -w '/usr/bin/nw /usr/bin/nfs2'|grep -v grep|wc -l`
+echo $ProcNumber
+if [ $ProcNumber -le 0 ];then
+        /usr/bin/nw /usr/bin/nfs2 &
+else
+   wmctrl -a 方德截图 && wmctrl -r 方德截图 -b add,maximized_vert,maximized_horz 
+fi
+

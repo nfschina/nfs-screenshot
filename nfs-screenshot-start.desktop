@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/nfs-screenshot-autostart
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[zh_CN]=nw开机自启动
+Name=nw auto_start
+Comment[zh_CN]=
+Comment=
+X-GNOME-Autostart-Delay=0

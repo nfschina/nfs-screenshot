@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/nfs-screenshot-autoclose
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[zh_CN]=nw检测并关闭
+Name=nw auto_close
+Comment[zh_CN]=
+Comment=
+X-GNOME-Autostart-Delay=50

@@ -1,0 +1,22 @@
+#!/bin/bash
+#ID=`ps -ef |grep -w '/usr/bin/nw /usr/bin/nfs2'|grep -v grep|awk '{print $2}'`
+#echo $ID
+#if [ ! -n "$ID" ];then
+#	echo "wait"
+#else 
+#	for id in $ID
+#        do
+#               kill -9 $id
+#        done
+#fi
+python /usr/bin/nfs/nfs-screenshot/nfs_python/nfs_clear_info.py
+ProcNumber=`ps -ef |grep -w '/usr/bin/nw /usr/bin/nfs/nfs-screenshot'|grep -v grep|wc -l`
+echo $ProcNumber
+if [ $ProcNumber -le 0 ];then  
+	sh /usr/bin/action "2" 0
+	#检测到最新的图片，拷贝到对应的目录
+	python /usr/bin/nfs/nfs-screenshot/nfs_python/nfs_move.py
+	/usr/bin/nw /usr/bin/nfs/nfs-screenshot
+else  
+  	python /usr/bin/nfs/nfs-screenshot/nfs_python/nfs_print_area.py #窗口
+fi
